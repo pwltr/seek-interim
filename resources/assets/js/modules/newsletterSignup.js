@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-const widget = $('.js-newsletter-widget')
-const form = widget.find('.js-nw-form')
-const statusBox = widget.find('.js-nw-status')
-const btn = widget.find('.js-nw-btn')
-const emailField = widget.find('#nw-mail')
+const nlForm = $('.js-newsletter-form')
+const form = nlForm.find('.js-nlf-form')
+const statusBox = nlForm.find('.js-nlf-status')
+const btn = nlForm.find('.js-nlf-btn')
+const emailField = nlForm.find('#nlf-mail')
 
 form.on('submit', function(e) {
   e.preventDefault()
@@ -19,7 +19,7 @@ form.on('submit', function(e) {
     messages = [...messages, 'Bitte geben Sie Ihre E-mail-Adresse ein.']
     emailField.parent().addClass('has-error')
 
-    widget.attr('data-state', 'error')
+    nlForm.attr('data-state', 'error')
     messages.forEach(msg => statusBox.append(`<div>${msg}</div>`))
 
     return false
@@ -27,27 +27,34 @@ form.on('submit', function(e) {
 
   const data = { email }
 
+  axios.interceptors.request.use(function(config) {
+    nlForm.attr('data-state', 'loading')
+    return config
+  })
+
   axios({
     method: 'post',
     url: '/',
     contentType: 'application/json; charset=utf-8',
     data: data,
-    dataType: 'json',
-    beforeSend: () => widget.attr('data-state', 'loading')
+    dataType: 'json'
   })
   .then(res => {
-    console.log(res.data)
-    // widget.attr('data-state', 'success')
-    //
-    // if (res.success === 'pending') {
-    //   messages = [...messages, 'Bitte bestätigen Sie die Anmeldung in Ihrer Mailbox.']
-    // }
+    nlForm.attr('data-state', 'success')
+
+    if (res.success === 'pending') {
+      messages = [...messages, 'Bitte bestätigen Sie die Anmeldung in Ihrer Mailbox.']
+    }
+
+    if (res.success === 'subscribed') {
+      messages = [...messages, 'Sie haben sich erfolgreich für den Newsletter angemeldet!']
+    }
   })
   .catch(error => {
     if (error.response) {
       const message = error.response.data.error
 
-      widget.attr('data-state', 'error')
+      nlForm.attr('data-state', 'error')
 
       // Handle Errors
       if (message === 'Invalid Email') {
