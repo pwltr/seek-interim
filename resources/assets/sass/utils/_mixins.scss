@@ -1,0 +1,338 @@
+// ------------------------------ UNITS ------------------------------
+
+// Use this for parent
+@mixin adjust-font-size-to($px) {
+  font-size: $px;
+}
+$rem-base: $baseFontSize;
+
+/// Removes the unit (e.g. px, em, rem) from a value, returning the number only.
+///
+/// @param {Number} $num - Number to strip unit from.
+///
+/// @returns {Number} The same number, sans unit.
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+/* rem calc function from foundation 6 */
+
+/// Converts one or more pixel values into matching rem values.
+///
+/// @param {Number|List} $values - One or more values to convert. Be sure to separate them with spaces and not commas. If you need to convert a comma-separated list, wrap the list in parentheses.
+/// @param {Number} $base [$rem-base] - The base value to use when calculating the `rem`. If you're using Foundation out of the box, this is 16px.
+///
+/// @returns {List} A list of converted values.
+
+// @function rem-calc($values, $base: $rem-base) {
+//   $rem-values: ();
+//   $count: length($values);
+//
+//   @if $base == null {
+//     $base: $rem-base;
+//   }
+//
+//   @if $count == 1 {
+//     @return -zf-to-rem($values, $base);
+//   }
+//
+//   @for $i from 1 through $count {
+//     $rem-values: append($rem-values, -zf-to-rem(nth($values, $i), $base));
+//   }
+//
+//   @return $rem-values;
+// }
+
+/// Converts a pixel value to matching rem value. *Any* value passed, regardless of unit, is assumed to be a pixel value. By default, the base pixel value used to calculate the rem value is taken from the `$rem-base` variable.
+/// @access private
+///
+/// @param {Number} $value - Pixel value to convert.
+/// @param {Number} $base [$rem-base] - Base for pixel conversion.
+///
+/// @returns {Number} A number in rems, calculated based on the given value and the base pixel value. rem values are passed through as is.
+
+@function -zf-to-rem($value, $base: $rem-base) {
+  // Calculate rem if units for $value is not rem
+  @if (unit($value) != 'rem') {
+    $value: strip-unit($value) / strip-unit($base) * 1rem;
+  }
+  // Turn 0rem into 0
+  @if ($value == 0rem) {
+    $value: 0;
+  }
+
+  @return $value;
+}
+
+@function to-pixel($value) {
+  $value: $value + 0px;
+
+  @return $value;
+}
+
+// Converts a unitless, pixel, or rem value to em, for use in breakpoints.
+
+@function -zf-bp-to-em($value) {
+  // Pixel and unitless values are converted to rems
+  @if unit($value) == 'px' or unitless($value) {
+    $value: strip-unit($value) / 16;
+  }
+
+  // Then the value is converted to ems
+  @return strip-unit($value) * 1em;
+}
+
+// ------------------------------ UNITS END ------------------------------
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+@mixin mq-min($value1, $value2: false) {
+  @if $value2 {
+    @media screen and (min-width: -zf-bp-to-em($value1)) and (max-width: -zf-bp-to-em($value2)) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: -zf-bp-to-em($value1)) {
+      @content;
+    }
+  }
+}
+
+@mixin mq-max($value1, $value2: false) {
+  @if $value2 {
+    @media screen and (max-width: -zf-bp-to-em($value1)) and (max-width: -zf-bp-to-em($value2)) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-width: -zf-bp-to-em($value1)) {
+      @content;
+    }
+  }
+}
+
+// Placeholder Color
+@mixin placeholder() {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    @content;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin ratioContainer($height, $width) {
+  content: '';
+  display: block;
+  padding-bottom: percentage($height/$width);
+}
+
+@mixin loadingBG {
+  background: radial-gradient(circle, $clr-white, shade($clr-gray-lightest, 20%));
+}
+
+// Clearfix
+@mixin clearfix {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@mixin adaptiveColums($nextElement) {
+  &:first-child:nth-last-child(2n),
+  &:first-child:nth-last-child(2n) ~ #{$nextElement} {
+    /* Multiple of 2 */
+    width: 50%;
+  }
+
+  /* TO save VSpace this rule takes precedence over the 2n rule */
+  &:first-child:nth-last-child(3n+5),
+  &:first-child:nth-last-child(3n+5) ~ #{$nextElement} {
+    width: 33.33%;
+  }
+
+  &:first-child:nth-last-child(3n+5) ~ #{$nextElement}:nth-last-child(-n+2) { /*Select last 2 elements*/
+    width: 50%;
+  }
+
+  /* One more rule to save even more VSpace */
+  &:first-child:nth-last-child(3n+7),
+  &:first-child:nth-last-child(3n+7) ~ #{$nextElement} {
+    width: 33.33%;
+  }
+
+  &:first-child:nth-last-child(3n+7) ~ #{$nextElement}:nth-last-child(-n+4) { /*Select last 2 elements*/
+    width: 50%;
+  }
+
+  &:first-child:nth-last-child(3n),
+  &:first-child:nth-last-child(3n) ~ #{$nextElement} {
+    width: 33.33%;
+  }
+  //}
+  //@else{
+  //
+  //flex: 1 0 100%;
+  //
+  //@include mq-min($bp-mobile-l + 1px){
+  //  flex: 1 0 50%;
+  //
+  //}
+  //
+  //@include mq-min($bp-tablet-l){
+  //  flex: 1 0 $defaultFlex;
+  //
+  //  &:nth-last-child(2):nth-child(4n) {
+  //	min-width: 33%;
+  //  }
+  //}
+  //
+  //}
+}
+
+@function hexToRGBString($hexColor) {
+  @return "#{red($hexColor)},#{green($hexColor)},#{blue($hexColor)}";
+}
+
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+  @each $property in $properties {
+    #{$property}: $min-value;
+  }
+
+  @media screen and (min-width: $min-vw) {
+    @each $property in $properties {
+      #{$property}: calc(#{$min-value} + #{strip-unitFluidType($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unitFluidType($max-vw - $min-vw)});
+    }
+  }
+
+  @media screen and (min-width: $max-vw) {
+    @each $property in $properties {
+      #{$property}: $max-value;
+    }
+  }
+}
+
+@function strip-unitFluidType($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+// Buttons
+@mixin button($background: $clr-primary, $color: $clr-white) {
+  background: $background;
+  border: none;
+  border-radius: $btn-radius;
+  color: $color;
+  cursor: pointer;
+  display: block;
+  font-size: 2rem;
+  font-weight: $fontWeightSemiBold;
+  line-height: 6rem;
+  padding: 1.7rem 2.5rem;
+  text-align: center;
+  transition: all 0.4s;
+
+  &:hover {
+    // box-shadow: inset 0 0 rem-calc(20) rgba($clr-black, 0.2);
+    background: shade($background, 5%);
+    text-decoration: none;
+  }
+
+  &:active {
+    box-shadow: inset 0 0 rem-calc(15) rgba($clr-black, 0.3);
+    background: shade($background, 5%);
+    text-decoration: none;
+  }
+}
+
+@mixin btn-hover($background: $clr-primary, $color: $clr-white) {
+  background: $background;
+  color: $color;
+  cursor: pointer;
+  transition: all 0.4s;
+
+  &:hover {
+    // box-shadow: inset 0 0 rem-calc(20) rgba($clr-black, 0.2);
+    background: shade($background, 5%);
+    text-decoration: none;
+  }
+
+  &:active {
+    box-shadow: inset 0 0 rem-calc(15) rgba($clr-black, 0.3);
+    background: shade($background, 5%);
+    text-decoration: none;
+  }
+}
+
+@mixin text-hover($space: 2px) {
+  position: relative;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: currentcolor;
+    opacity: 0;
+    transition: height 0.3s, opacity 0.3s, transform 0.3s;
+    transform: translateY(-10px);
+  }
+
+  &:hover,
+  &.is-active {
+    &::after {
+      height: 2px;
+      opacity: 1;
+      transform: translateY($space);
+    }
+  }
+}

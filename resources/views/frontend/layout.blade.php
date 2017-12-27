@@ -11,7 +11,7 @@
     </head>
 
     <body>
-      <div class="page-wrapper @if (!empty($pageTitle)){{ $pageTitle }}@endif">
+      <div class="page-wrapper page-@yield('title')">
         @yield('header')
 
         <main class="page-content">
@@ -20,6 +20,8 @@
 
         @yield('footer')
       </div>
+
+      {{-- @include('library.modules.loading-screen') --}}
 
       <script src="{{ asset('js/frontend/manifest.js') }}"></script>
       <script src="{{ asset('js/frontend/vendor.js') }}"></script>

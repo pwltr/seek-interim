@@ -1,0 +1,39 @@
+.page-wrapper {
+  overflow-x: hidden;
+  // padding-top: 12rem;
+
+  // @include mq-min($bp-tablet-l + 1px) {
+  //   padding-top: 25rem;
+  // }
+}
+
+.outer-container {
+  width: 92%;
+  max-width: 168rem;
+  margin: 0 auto;
+  position: relative;
+}
+
+.inner-container {
+  width: 92%;
+  max-width: 144rem;
+  margin: 0 auto;
+  position: relative;
+}
+
+.page-content {
+  padding-top: 4.5rem;
+  margin-bottom: 12rem;
+}
+
+.page-content-inner {
+  // @supports (display: grid) {
+  //   display: grid;
+  //   grid-template-columns: 3fr 1fr;
+  //   grid-column-gap: 4rem;
+  // }
+}
+
+.page-content-main {
+  //
+}
