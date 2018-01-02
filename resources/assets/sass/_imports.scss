@@ -1,5 +1,5 @@
 // Plugins
-//
+@import "~normalize.css/normalize";
 
 // Fonts
 @import "config/fonts";
@@ -14,8 +14,8 @@
 @import "utils/extends";
 
 // SVG Sprite
-// @import "svgsprite/symbol-sprite";
-// @import "svgsprite/svg-symbols";
+@import "svgsprite/symbol-sprite";
+@import "svgsprite/svg-symbols";
 
 // Layout
 @import "layout/container";
@@ -27,10 +27,14 @@
 @import "elements/content";
 
 // Components
-//
+@import "components/button";
+@import "components/newsletter";
+@import "components/ui-components";
 
 // Modules
 @import "modules/footer";
+@import "modules/header";
+@import "modules/loading-screen";
 @import "modules/newsletter-section";
 
 // Pages

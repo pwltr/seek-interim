@@ -3,7 +3,7 @@
 }
 
 :root {
-  font-size: $baseFontSize;
+  font-size: $font-size-base;
 }
 
 html,
@@ -22,9 +22,9 @@ html {
 body {
   background: $clr-white;
   color: $clr-gray-dark;
-  font-family: $baseFontFamily;
+  font-family: $font-family-base;
   font-size: 1.5rem;
-  font-weight: $fontWeightRegular;
+  font-weight: $font-weight-Regular;
   line-height: $baseLineHeight;
   min-height: 100%;
   min-width: 32rem;
@@ -34,13 +34,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   .wf-active & {
-    font-family: $baseFontFamily;
+    font-family: $font-family-base;
   }
 
-  &.no-scroll {
+  &.no-scroll,
+  &.is-loading {
+    overflow: hidden;
+
     @include mq-max($bp-tablet-l) {
       height: 100vh !important;
-      overflow: hidden !important;
     }
   }
 }
@@ -50,17 +52,12 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: $headlineFontFamily;
-  font-weight: $fontWeightSemiBold;
+  font-family: $font-family-headline;
+  font-weight: $font-weight-SemiBold;
   line-height: 1;
 
-  span {
-    font-family: $baseFontFamily;
-    font-weight: $fontWeightSemiBold;
-  }
-
   .wf-active & {
-    font-family: $headlineFontFamily;
+    font-family: $font-family-headline;
   }
 
   a {
@@ -71,19 +68,11 @@ h5 {
 // use rem units so that it's always the same!
 h1 {
   font-size: 6rem;
-  font-weight: $fontWeightBold;
-
-  & + * {
-    margin-top: 1rem;
-  }
+  font-weight: $font-weight-Bold;
 }
 
 h2 {
   font-size: 3rem;
-
-  & + * {
-    margin-top: 1.5rem;
-  }
 
   * + & {
     margin-top: 1.5rem;
@@ -149,7 +138,7 @@ figure {
 
 strong,
 b {
-  font-weight: $fontWeightSemiBold;
+  font-weight: $font-weight-SemiBold;
 }
 
 i,
@@ -181,7 +170,7 @@ blockquote {
   text-align: center;
 
   .wf-active & {
-    font-family: $headlineFontFamily;
+    font-family: $font-family-headline;
   }
 
   &::before,
@@ -204,10 +193,6 @@ blockquote {
     bottom: 35%;
     right: 0;
     transform: translateY(50%);
-  }
-
-  & + * {
-    margin-top: 2rem;
   }
 }
 

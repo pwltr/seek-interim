@@ -1,0 +1,5 @@
+AuthUserFile /home/sites/www.seek-athletics.com/web/.htpasswd
+AuthName Admin
+AuthType Basic
+Require user seek
+AuthGroupFile /home/sites/www.seek-athletics.com/web/.group

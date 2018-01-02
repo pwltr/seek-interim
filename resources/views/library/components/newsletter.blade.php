@@ -1,30 +1,24 @@
-<div class="newsletter-form js-newsletter-form" data-state>
-  <form class="js-nlf-form" action="" method="post">
+<div class="newsletter-signup js-newsletter-signup" data-state="inactive">
+  <form class="newsletter-signup-form js-nsf" action="" method="post">
     {{ csrf_field() }}
 
     <input type="hidden" name="formID" value="nlform">
+    <input id="nsf-mail" class="nsf-input" type="email" placeholder="E-Mail Address" value="">
 
-    <div class="nlf-body">
-      <div class="nlf-status js-nlf-status"></div>
-
-      <div class="nlf-field form-field js-field">
-        <input id="nlf-mail" type="email" placeholder="E-Mail-Adresse" value="">
-        <label for="nlf-mail">E-Mail-Adresse</label>
-      </div>
-    </div>
-
-    <button class="nlf-btn js-nlf-btn" type="submit">
-      <span class="nlf-btn-text">
-        Jetzt Newsletter abonnieren!
+    <button class="hc-btn nsf-btn js-nsf-btn" type="submit">
+      <span class="nsf-btn-text">
+        Notify me
       </span>
 
       <div class="loading-wrapper">
-        <div class="loading"></div>
+        <div class="loading-spinner"></div>
       </div>
 
-      <span class="nlf-btn-text--success">
-        Abonniert!
+      <span class="nsf-btn-text--success">
+        Success!
       </span>
     </button>
   </form>
+
+  <div class="nsf-status js-nsf-status"></div>
 </div>

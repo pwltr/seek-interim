@@ -1,21 +1,98 @@
-import LazyLoad from 'vanilla-lazyload'
+import classie from 'classie'
+import imagesLoaded from 'imagesLoaded'
+// import LazyLoad from 'vanilla-lazyload'
 import svg4everybody from 'svg4everybody'
 
 import globals from './config/globals'
+import PathLoader from './modules/pathLoader'
 
 // import './modules/nav-mobile'
 import './modules/newsletterSignup'
 
-function init() {
+$(document).ready(() => {
   svg4everybody()
 
-  const lazyload = new LazyLoad({ elements_selector: '.lazyload' })
-}
+  // const lazyload = new LazyLoad({ elements_selector: '.lazyload' })
 
-(function ready(init) {
-  if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
-    init()
-  } else {
-    document.addEventListener('DOMContentLoaded', init)
+  const support = { animations: Modernizr.cssanimations }
+  const container = document.getElementById('ip-container')
+  const header = container.querySelector('.ip-intro')
+  const loader = new PathLoader(document.getElementById('ip-loader-circle'))
+  const animEndEventNames = {
+    WebkitAnimation: 'webkitAnimationEnd',
+    OAnimation: 'oAnimationEnd',
+    msAnimation: 'MSAnimationEnd',
+    animation: 'animationend',
   }
-})(init)
+
+  // animation end event name
+  const animEndEventName = animEndEventNames[Modernizr.prefixed('animation')]
+
+  function init() {
+    let onEndInitialAnimation = function() {
+      if (support.animations) {
+        this.removeEventListener(animEndEventName, onEndInitialAnimation)
+      }
+
+      startLoading()
+    }
+
+    // disable scrolling
+    window.addEventListener('scroll', noscroll)
+
+    // initial animation
+    classie.add(container, 'loading')
+
+    if (support.animations) {
+      container.addEventListener(animEndEventName, onEndInitialAnimation)
+    } else {
+      onEndInitialAnimation()
+    }
+  }
+
+  function startLoading() {
+    // simulate loading something..
+    let simulationFn = function(instance) {
+      let progress = 0
+
+      let interval = setInterval(function() {
+        progress = Math.min(progress + Math.random() * 0.1, 1)
+
+        instance.setProgress(progress)
+
+        imagesLoaded('.preload', () => {
+          // reached the end
+          if (progress === 1) {
+            classie.remove(container, 'loading')
+            classie.add(container, 'loaded')
+            clearInterval(interval)
+
+            let onEndHeaderAnimation = function(event) {
+              if (support.animations) {
+                if (event.target !== header) return
+                this.removeEventListener(animEndEventName, onEndHeaderAnimation)
+              }
+
+              classie.add(document.body, 'layout-switch')
+              window.removeEventListener('scroll', noscroll)
+            }
+
+            if (support.animations) {
+              header.addEventListener(animEndEventName, onEndHeaderAnimation)
+            } else {
+              onEndHeaderAnimation()
+            }
+          }
+        })
+      }, 80)
+    }
+
+    loader.setProgressFn(simulationFn)
+  }
+
+  function noscroll() {
+    window.scrollTo(0, 0)
+  }
+
+  init()
+})

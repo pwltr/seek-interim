@@ -1,0 +1,38 @@
+.loading-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.loading-spinner,
+.loading-spinner::after {
+  border-radius: 50%;
+  width: 1.4em;
+  height: 1.4em;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.loading-spinner {
+  // position: relative;
+  border-top: 0.1em solid rgba($clr-white, 0.2);
+  border-right: 0.1em solid rgba($clr-white, 0.2);
+  border-bottom: 0.1em solid rgba($clr-white, 0.2);
+  border-left: 0.1em solid $clr-white;
+  transform: translate(-50%, -50%) translateZ(0);
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

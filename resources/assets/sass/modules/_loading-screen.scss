@@ -1,0 +1,262 @@
+.ip-intro {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  min-height: 480px;
+  width: 100%;
+  height: 100%;
+  background: $clr-gray-light;
+
+  .layout-switch & {
+    position: absolute;
+  }
+
+  .loaded & {
+    animation: animLoadedHeader 1s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+  }
+}
+
+.ip-title,
+.ip-loader {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  cursor: default;
+  pointer-events: none;
+}
+
+.ip-title {
+  top: 0;
+  height: 100%;
+  text-align: center;
+  transform: translate3d(0, 0, 0);
+
+  @include mq-min($bp-tablet-p) {
+    transform: translate3d(0, 25%, 0);
+  }
+
+  .loading & {
+    opacity: 1;
+    animation: animInitialHeader 1s cubic-bezier(0.7, 0, 0.3, 1) both;
+  }
+
+	svg {
+    fill: $clr-gray-dark;
+	  min-width: 320px;
+	  max-width: 480px;
+    height: auto;
+	  width: 25%;
+	}
+}
+
+.ip-loader {
+  bottom: 20%;
+  font-size: 3rem;
+  font-weight: $font-weight-Bold;
+  text-align: center;
+
+  .loading & {
+    opacity: 1;
+    animation: animInitialHeader 1s cubic-bezier(0.7, 0, 0.3, 1) both;
+    animation-delay: 0.2s;
+  }
+
+	svg path {
+	  fill: none;
+	  stroke-width: 6;
+
+		&.ip-loader-circlebg {
+		  stroke: #ddd;
+		}
+	}
+}
+
+.ip-intro .ip-inner {
+  display: block;
+  margin: 0 auto;
+}
+
+.ip-intro .ip-loader svg path.ip-loader-circle {
+  transition: stroke-dashoffset 0.2s;
+  stroke: $clr-gray-dark;
+}
+
+/* Content */
+.ip-main {
+  overflow: hidden;
+  margin: 0 auto;
+  // padding: 160px 0 10em 0;
+  // max-width: 1100px;
+  // width: 90%;
+}
+
+/* Header elements when loading finishes */
+.loaded .ip-title,
+.loaded .ip-loader {
+  opacity: 1;
+}
+
+.loaded .ip-title {
+  transform-origin: 50% 0;
+  animation: animLoadedLogo 1s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.loaded .ip-loader {
+  animation: animLoadedLoader 0.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+/* Change the color of the logo */
+.loaded .ip-title svg {
+  transition: all 0.5s ease 0.3s;
+  fill: $clr-white;
+}
+
+/* No JS */
+.no-js .ip-intro {
+  position: relative;
+  min-height: 0;
+}
+
+.no-js .ip-intro .ip-title {
+  margin-top: 20px;
+  height: 180px;
+  opacity: 1;
+  transform: none;
+}
+
+.no-js .ip-intro .ip-title svg {
+  fill: $clr-gray-dark;
+}
+
+// Animations
+@keyframes animInitialHeader {
+  from {
+		opacity: 0;
+		transform: translate3d(0, 800px, 0);
+  }
+}
+
+@keyframes animLoadedLogo {
+  to {
+		transform: translate3d(0, 100%, 0) scale3d(0.6, 0.6, 1);
+  }
+}
+
+@keyframes animLoadedLoader {
+  to {
+		opacity: 0;
+		transform: translate3d(0, -100%, 0) scale3d(0.3, 0.3, 1);
+  }
+}
+
+@keyframes animLoadedHeader {
+  to {
+		transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes animLoadedContent {
+  from {
+		opacity: 0;
+		transform: translate(-50%, 130%);
+  }
+}
+
+@keyframes animLoadedContentElements {
+  from {
+		transform: translate(0, 130%);
+  }
+}
+
+
+// $stroke-width: 13;
+// $stroke-linecap: butt;
+// $looping-color: $clr-white;
+//
+// $total-duration: 1s;
+// $total-length: 371.68328857421875; // From JS
+// $looping-percent: 40;
+//
+// $looping-length: ($looping-percent * $total-length) / 100;
+//
+// .loader-wrapper {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: 1000;
+// }
+//
+// .loader {
+//   position: absolute;
+//   left: 50%;
+//   top: 50%;
+//   transform: translate(-50%, -50%);
+//   width: 16rem;
+//   z-index: 1001;
+// }
+//
+// .loading-spinner {
+//   max-width: 100%;
+// 	// perspective: 2000px;
+// 	// perspective-origin: left center;
+// 	// transform: rotateY(120deg);
+// 	// transform-style: preserve-3d;
+// 	stroke-width: $stroke-width;
+// 	stroke-linecap: $stroke-linecap;
+// 	stroke: $looping-color;
+// 	stroke-dasharray: $looping-length, ($total-length - $looping-length);
+// 	animation: loading-loop $total-duration linear infinite;
+// }
+//
+// @keyframes loading-loop {
+// 	from { stroke-dashoffset: 0px; }
+// 	to   { stroke-dashoffset: #{- $total-length}px; } // Needs unit to work in Edge
+// }
+//
+// .loader-wrapper .loader-section {
+//   position: fixed;
+//   top: 0;
+//   width: 51%;
+//   height: 100%;
+//   background: $clr-gray-dark;
+//   z-index: 1000;
+//   transform: translateX(0);
+// }
+//
+// .loader-wrapper .loader-section.section-left {
+//   left: 0;
+// }
+//
+// .loader-wrapper .loader-section.section-right {
+//   right: 0;
+// }
+//
+// /* Loaded */
+// .is-loaded .loader-wrapper .loader-section.section-left {
+//   transform: translateX(-100%);
+//   transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+// }
+//
+// .is-loaded .loader-wrapper .loader-section.section-right {
+//   transform: translateX(100%);
+//   transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+// }
+//
+// .is-loaded .loader {
+//   opacity: 0;
+//   transition: all 0.3s ease-out;
+// }
+//
+// .is-loaded .loader-wrapper {
+//   visibility: hidden;
+//   transform: translateY(-100%);
+//   transition: all 0.3s 1s ease-out;
+// }
+//
+// /* JavaScript Turned Off */
+// .no-js .loader-wrapper {
+//   display: none;
+// }

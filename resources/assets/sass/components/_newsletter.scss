@@ -1,0 +1,129 @@
+.newsletter-signup-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 70rem;
+  transition: box-shadow 0.12s linear;
+
+  &.has-focus {
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.2), 0 5px 15px rgba(0, 0, 0, 0.17);
+  }
+}
+
+.nsf-input {
+  background: $clr-white;
+  border: 1px solid $clr-gray-dark;
+  border: none;
+  color: $clr-gray-dark;
+  font-size: 1.8rem;
+  font-weight: $font-weight-SemiBold;
+  line-height: 4.4rem;
+  padding: 0 2rem;
+  flex: 1;
+  transform: scaleX(1);
+  transition: all 0.4s ease;
+  transform-origin: right center;
+  width: auto;
+
+  [data-state="inactive"] & {
+    flex: none;
+    width: 0;
+    padding: 0;
+    transform: scaleX(0);
+  }
+
+  // &:focus {
+  //   outline: none;
+  //   box-shadow: 0 0 4px #0d76be inset;
+  // }
+
+  @include placeholder {
+    color: $clr-gray-dark;
+    font-size: 1.8rem;
+    font-weight: $font-weight-Light;
+    opacity: 1;
+
+    @include mq-min($bp-tablet-l) {
+      font-size: 2rem;
+    }
+  }
+
+  @include mq-min($bp-tablet-l) {
+    font-size: 2rem;
+  }
+}
+
+.nsf-btn {
+  @extend .btn--outline;
+
+  display: block;
+  font-size: 2rem;
+  font-weight: $font-weight-Light;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  overflow: hidden;
+  position: relative;
+
+  .loading-wrapper {
+    display: none;
+    background: $clr-gray-dark;
+    border-bottom-left-radius: $border-default-radius;
+    border-bottom-right-radius: $border-default-radius;
+    padding: 1.7rem 0;
+
+    [data-state="loading"] & {
+      display: block;
+    }
+  }
+
+  .icon {
+    display: none;
+    background: $clr-gray-dark;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    // padding: 0.5rem;
+
+    [data-state="success"] & {
+      display: block;
+    }
+  }
+}
+
+.nsf-btn-text {
+  [data-state="success"] & {
+    display: none;
+  }
+
+  &--success {
+    display: none;
+
+    [data-state="success"] & {
+      display: block;
+    }
+  }
+}
+
+.nsf-status {
+  color: $clr-white;
+  font-size: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.nsf-success {
+  color: $clr-success;
+  display: none;
+
+  [data-state="success"] & {
+    display: block;
+  }
+}

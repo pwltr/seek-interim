@@ -1,0 +1,43 @@
+// 1. create svg/sprite-symbol.svg with gulp svgsprite
+// 2. define default size for .icon
+// 3. make symbol responsive by positioning svg absolute
+
+.icon {
+  position: relative;
+  width: 2rem;
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: middle;
+
+  &::before {
+    content: '';
+    display: block;
+  }
+
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.icon-stroke {
+  svg {
+    fill: transparent !important;
+    stroke: currentColor;
+    // stroke-linecap: square;
+    stroke-miterlimit: 10;
+  }
+}
+
+// 4. loop through $symbols map to define padding-bottom
+@each $name, $map in $symbols {
+  $height: map-get($map, height);
+  $width: map-get($map, width);
+
+  .#{$name}::before {
+    padding-bottom: percentage($height/$width);
+  }
+}

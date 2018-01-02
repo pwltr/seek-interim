@@ -15,7 +15,7 @@ mix.autoload({
   'cash-dom': ['$'],
 })
 
-mix.js('resources/assets/js/main', 'public/js/frontend')
+mix.js('resources/assets/js/main', 'public/js')
    .extract([
      'cash-dom',
      'svg4everybody',

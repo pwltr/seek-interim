@@ -1,31 +1,27 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html class="no-js" lang="{{ app()->getLocale() }}">
     <head>
         @include('frontend.head.meta')
         {{-- @include('frontend.head.favicons') --}}
         {{-- @include('frontend.head.social') --}}
-
-        <title>SEEK | Welcome</title>
-
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+        <script src="js/modernizr.custom.js"></script>
     </head>
 
     <body>
-      <div class="page-wrapper page-@yield('title')">
-        @yield('header')
+      <div id="ip-container" class="ip-container page-wrapper page-@yield('title')">
+        @include('library.modules.intro')
 
-        <main class="page-content">
+        <main class="ip-main">
+          @yield('header')
           @yield('content')
+          @yield('footer')
         </main>
-
-        @yield('footer')
       </div>
 
-      {{-- @include('library.modules.loading-screen') --}}
-
-      <script src="{{ asset('js/frontend/manifest.js') }}"></script>
-      <script src="{{ asset('js/frontend/vendor.js') }}"></script>
-      <script src="{{ asset('js/frontend/main.js') }}"></script>
+      <script src="{{ asset('js/manifest.js') }}"></script>
+      <script src="{{ asset('js/vendor.js') }}"></script>
+      <script src="{{ asset('js/main.js') }}"></script>
 
       @yield('scripts')
     </body>

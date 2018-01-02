@@ -4,7 +4,7 @@
 @mixin adjust-font-size-to($px) {
   font-size: $px;
 }
-$rem-base: $baseFontSize;
+$rem-base: $font-size-base;
 
 /// Removes the unit (e.g. px, em, rem) from a value, returning the number only.
 ///
@@ -271,8 +271,8 @@ $rem-base: $baseFontSize;
   cursor: pointer;
   display: block;
   font-size: 2rem;
-  font-weight: $fontWeightSemiBold;
-  line-height: 6rem;
+  font-weight: $font-weight-SemiBold;
+  line-height: 4.4rem;
   padding: 1.7rem 2.5rem;
   text-align: center;
   transition: all 0.4s;
