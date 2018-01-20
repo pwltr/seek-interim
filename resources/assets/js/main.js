@@ -6,11 +6,14 @@ import svg4everybody from 'svg4everybody'
 import globals from './config/globals'
 import PathLoader from './modules/pathLoader'
 
+import { getCookie, setCookie, deleteCookie } from './utils'
 // import './modules/nav-mobile'
 import './modules/newsletterSignup'
 
 $(document).ready(() => {
   svg4everybody()
+
+  const hasVisited = getCookie('loading-screen')
 
   // const lazyload = new LazyLoad({ elements_selector: '.lazyload' })
 
@@ -28,7 +31,7 @@ $(document).ready(() => {
   // animation end event name
   const animEndEventName = animEndEventNames[Modernizr.prefixed('animation')]
 
-  function init() {
+  function initLoadingScreen() {
     let onEndInitialAnimation = function() {
       if (support.animations) {
         this.removeEventListener(animEndEventName, onEndInitialAnimation)
@@ -65,6 +68,7 @@ $(document).ready(() => {
           if (progress === 1) {
             classie.remove(container, 'loading')
             classie.add(container, 'loaded')
+
             clearInterval(interval)
 
             let onEndHeaderAnimation = function(event) {
@@ -82,6 +86,8 @@ $(document).ready(() => {
             } else {
               onEndHeaderAnimation()
             }
+
+            setCookie('loading-screen', true, 7)
           }
         })
       }, 80)
@@ -94,5 +100,10 @@ $(document).ready(() => {
     window.scrollTo(0, 0)
   }
 
-  init()
+  if (!hasVisited) {
+    initLoadingScreen()
+  } else {
+    classie.add(container, 'loaded')
+    classie.add(document.body, 'layout-switch')
+  }
 })

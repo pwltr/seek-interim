@@ -2,7 +2,7 @@
 <html class="no-js" lang="{{ app()->getLocale() }}">
     <head>
         @include('frontend.head.meta')
-        {{-- @include('frontend.head.favicons') --}}
+        @include('frontend.head.favicon')
         {{-- @include('frontend.head.social') --}}
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
         <script src="js/modernizr.custom.js"></script>

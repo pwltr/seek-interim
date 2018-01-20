@@ -21,7 +21,7 @@ form.on('submit', function(e) {
   emailField.parent().removeClass('has-error')
 
   if (email.length == 0) {
-    messages = [...messages, 'Bitte geben Sie Ihre E-mail-Adresse ein.']
+    messages = [...messages, 'Bitte gib deine E-mail-Adresse ein.']
     emailField.parent().addClass('has-error')
 
     container.attr('data-state', 'error')
@@ -48,11 +48,11 @@ form.on('submit', function(e) {
     container.attr('data-state', 'success')
 
     if (res.success === 'pending') {
-      messages = [...messages, 'Bitte bestätigen Sie die Anmeldung in Ihrer Mailbox.']
+      messages = [...messages, 'Bitte bestätige deine Anmeldung in deiner Mailbox.']
     }
 
     if (res.success === 'subscribed') {
-      messages = [...messages, 'Sie haben sich erfolgreich für den Newsletter angemeldet!']
+      messages = [...messages, 'Danke & bis bald']
     }
   })
   .catch(error => {
@@ -63,17 +63,17 @@ form.on('submit', function(e) {
 
       // Handle Errors
       if (message === 'Invalid Email') {
-        messages = [...messages, 'Bitte geben Sie eine gültige E-Mail-Adresse ein.']
+        messages = [...messages, 'Bitte gib eine gültige E-Mail-Adresse ein.']
         emailField.parent().addClass('has-error')
       }
       else if (message === 'Member exists') {
-        messages = [...messages, 'Sie haben den Newsletter bereits abonniert.']
+        messages = [...messages, 'Du hast den Newsletter bereits abonniert.']
       }
       else if (message === 'Invalid Resource') {
         messages = [...messages, 'Die E-Mail-Adresse scheint ungültig zu sein.']
       }
       else {
-        messages = [...messages, 'Ein unbekannter Fehler ist aufgetreten. Bitte versuchen Sie es später noch einmal.']
+        messages = [...messages, 'Ein unbekannter Fehler ist aufgetreten. Bitte versuche es später noch einmal.']
       }
     }
   })
