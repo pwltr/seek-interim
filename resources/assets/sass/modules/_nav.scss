@@ -4,7 +4,11 @@
 
 .nav-list {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+
+  @include mq-min($bp-tablet-p) {
+    justify-content: flex-end;
+  }
 }
 
 .nav-item {
@@ -16,5 +20,8 @@
 }
 
 .nav-item-link {
+  @include text-hover();
+
   color: $clr-white;
+  text-transform: uppercase;
 }

@@ -1,6 +1,19 @@
 <header class="header">
   <div class="header-background">
-    <img class="header-background-img preload" src="{{ asset('images/header-bg.jpg') }}" alt="">
+    <picture>
+        <source
+                srcset="{{ asset('images/header-bg-mobile.jpg') }}"
+                media="(max-width: 640px)"/>
+        <source
+                srcset="{{ asset('images/header-bg-tablet.jpg') }}"
+                media="(min-width: 641px)"/>
+        <source
+                srcset="{{ asset('images/header-bg-desktop.jpg') }}"
+                media="(min-width: 1024px)"/>
+        <!--[if IE 9]></audio><![endif]-->
+        <img src="{{ asset('images/header-bg-desktop.jpg') }}"
+             class="header-background-img preload" alt=""/>
+    </picture>
   </div>
 
   <div class="header-foreground">
@@ -9,16 +22,16 @@
         <nav class="nav">
           <ul class="nav-list">
             <li class="nav-item">
+              <a class="nav-item-link" href="#section-about">about</a>
+            </li>
+
+            <li class="nav-item">
               <a class="nav-item-link" href="#section-contact">Contact</a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-item-link" href="#section-store">Store</a>
-            </li>
-
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-item-link" href="#section-blog">Blog</a>
-            </li>
+            </li> --}}
           </ul>
         </nav>
       </div>
@@ -39,7 +52,7 @@
     </div>
   </div>
 
-  <div class="social-media">
+  {{-- <div class="social-media">
     <a class="sm-item" href="#">
       Facebook
     </a>
@@ -51,5 +64,5 @@
     <a class="sm-item" href="#">
       Instagram
     </a>
-  </div>
+  </div> --}}
 </header>

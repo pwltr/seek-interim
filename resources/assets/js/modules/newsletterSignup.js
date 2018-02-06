@@ -3,10 +3,15 @@ import axios from 'axios'
 const container = $('.js-newsletter-signup')
 const form = container.find('.js-nsf')
 const statusBox = container.find('.js-nsf-status')
-const btn = container.find('.js-nsf-btn')
+const btnOne = container.find('.js-nsf-btn-1')
+const btnTwo = container.find('.js-nsf-btn-2')
+const viewOne = container.find('.js-nsf-view-1')
+const viewTwo = container.find('.js-nsf-view-2')
 const emailField = container.find('#nsf-mail')
+const firstNameField = container.find('#nsf-firstname')
+const lastNameField = container.find('#nsf-lastname')
 
-form.on('submit', function(e) {
+btnOne.on('click', function(e) {
   e.preventDefault()
 
   if (container.attr('data-state') === 'inactive') {
@@ -20,8 +25,8 @@ form.on('submit', function(e) {
   statusBox.empty()
   emailField.parent().removeClass('has-error')
 
-  if (email.length == 0) {
-    messages = [...messages, 'Bitte gib deine E-mail-Adresse ein.']
+  if (!email || !emailField[0].validity.valid) {
+    messages = [...messages, 'Please enter your email address.']
     emailField.parent().addClass('has-error')
 
     container.attr('data-state', 'error')
@@ -30,7 +35,47 @@ form.on('submit', function(e) {
     return false
   }
 
-  const data = { email }
+  container.attr('data-state', 'show-view-2')
+})
+
+form.on('submit', function(e) {
+  e.preventDefault()
+
+  let messages = []
+  const email = emailField.val()
+  const firstName = firstNameField.val()
+  const lastName = lastNameField.val()
+
+  statusBox.empty()
+  emailField.parent().removeClass('has-error')
+
+  if (!email || !emailField[0].validity.valid) {
+    messages = [...messages, 'Please enter your email address.']
+    emailField.parent().addClass('has-error')
+
+    container.attr('data-state', 'error')
+    messages.forEach(msg => statusBox.append(`<div>${msg}</div>`))
+
+    return false
+  }
+
+  if (
+    (!firstName || firstName.length == 0) ||
+    (!lastName || lastName.length == 0)
+  ) {
+    messages = [...messages, 'Please tell us your name.']
+
+    container.attr('data-state', 'error')
+    messages.forEach(msg => statusBox.append(`<div>${msg}</div>`))
+
+    return false
+  }
+
+  const data = {
+    email,
+    firstName,
+    lastName,
+  }
 
   axios.interceptors.request.use(function(config) {
     container.attr('data-state', 'loading')
@@ -48,11 +93,11 @@ form.on('submit', function(e) {
     container.attr('data-state', 'success')
 
     if (res.success === 'pending') {
-      messages = [...messages, 'Bitte bestätige deine Anmeldung in deiner Mailbox.']
+      messages = [...messages, 'Please confirm your subscription in your inbox.']
     }
 
     if (res.success === 'subscribed') {
-      messages = [...messages, 'Danke & bis bald']
+      messages = [...messages, 'Thank you! You will hear from us soon.']
     }
   })
   .catch(error => {
@@ -63,17 +108,17 @@ form.on('submit', function(e) {
 
       // Handle Errors
       if (message === 'Invalid Email') {
-        messages = [...messages, 'Bitte gib eine gültige E-Mail-Adresse ein.']
+        messages = [...messages, 'Please enter a valid email address.']
         emailField.parent().addClass('has-error')
       }
       else if (message === 'Member exists') {
-        messages = [...messages, 'Du hast den Newsletter bereits abonniert.']
+        messages = [...messages, 'You are already subscribed.']
       }
       else if (message === 'Invalid Resource') {
-        messages = [...messages, 'Die E-Mail-Adresse scheint ungültig zu sein.']
+        messages = [...messages, 'Your email address seems to be invalid.']
       }
       else {
-        messages = [...messages, 'Ein unbekannter Fehler ist aufgetreten. Bitte versuche es später noch einmal.']
+        messages = [...messages, 'An unknown error occured. Please try again later.']
       }
     }
   })

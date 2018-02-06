@@ -17,6 +17,8 @@ class WelcomeController extends Controller
       $listID = config("newsletter.lists.subscribers.id");
 
       $email = $request->input('email');
+      $first_name = $request->input('firstName');
+      $last_name = $request->input('lastName');
 
       // Validate Email
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -32,13 +34,16 @@ class WelcomeController extends Controller
       // Write to DB
       $subscriber = new Subscriber();
       $subscriber->email = $email;
+      $subscriber->first_name = $first_name;
+      $subscriber->last_name = $last_name;
       $subscriber->save();
 
       $mailchimp = new MailChimp($apiKey);
 
       $result = $mailchimp->post("lists/$listID/members", [
+        'merge_fields' => ['FNAME' => $first_name, 'LNAME' => $last_name],
         'email_address' => $email,
-        'status'        => 'subscribed'
+        'status' => 'subscribed'
       ]);
 
       if ($mailchimp->success()) {

@@ -309,7 +309,7 @@ $rem-base: $font-size-base;
   }
 }
 
-@mixin text-hover($space: 2px) {
+@mixin text-hover($space: 3px) {
   position: relative;
   text-decoration: none;
   transition: all 0.15s ease-in-out;
@@ -323,14 +323,14 @@ $rem-base: $font-size-base;
     height: 1px;
     background: currentcolor;
     opacity: 0;
-    transition: height 0.3s, opacity 0.3s, transform 0.3s;
-    transform: translateY(-10px);
+    transition: opacity 0.2s, transform 0.2s;
+    transform: translateY(-5px);
   }
 
   &:hover,
   &.is-active {
     &::after {
-      height: 2px;
+      height: 1px;
       opacity: 1;
       transform: translateY($space);
     }

@@ -7,7 +7,8 @@
 @endsection
 
 @section('content')
-  {{-- @include('library.modules.newsletter-section') --}}
+  @include('library.modules.about-section')
+  @include('library.modules.contact-section')
 @endsection
 
 @section('footer')

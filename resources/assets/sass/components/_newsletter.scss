@@ -19,6 +19,7 @@
   font-size: 1.8rem;
   font-weight: $font-weight-SemiBold;
   line-height: 4.4rem;
+  margin-bottom: 2rem;
   padding: 0 2rem;
   flex: 1;
   transform: scaleX(1);
@@ -50,6 +51,7 @@
   }
 
   @include mq-min($bp-tablet-l) {
+    margin-bottom: 0;
     font-size: 2rem;
   }
 }
@@ -95,17 +97,7 @@
 }
 
 .nsf-btn-text {
-  [data-state="success"] & {
-    display: none;
-  }
-
-  &--success {
-    display: none;
-
-    [data-state="success"] & {
-      display: block;
-    }
-  }
+  //
 }
 
 .nsf-status {
@@ -122,6 +114,47 @@
 .nsf-success {
   color: $clr-success;
   display: none;
+
+  [data-state="success"] & {
+    display: block;
+  }
+}
+
+.nsf-view {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 70rem;
+  transition: box-shadow 0.12s linear;
+
+  &.has-focus {
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.2), 0 5px 15px rgba(0, 0, 0, 0.17);
+  }
+}
+
+.nsf-view-1 {
+  [data-state="show-view-2"] &,
+  [data-state="success"] & {
+    display: none;
+  }
+}
+
+.nsf-view-2 {
+  display: none;
+
+  [data-state="show-view-2"] & {
+    display: block;
+  }
+
+  .nsf-btn {
+    margin: 2rem auto 0;
+  }
+}
+
+.nsf-view-3 {
+  display: none;
+  font-size: 3rem;
 
   [data-state="success"] & {
     display: block;
