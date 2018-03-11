@@ -62,14 +62,17 @@
     animation-delay: 0.2s;
   }
 
-	svg path {
-	  fill: none;
-	  stroke-width: 6;
+	svg {
+    path {
+      display: none;
+  	  fill: none;
+  	  stroke-width: 6;
 
-		&.ip-loader-circlebg {
-		  stroke: #ddd;
-		}
-	}
+  		&.ip-loader-circlebg {
+  		  stroke: #ddd;
+  		}
+  	}
+  }
 }
 
 .ip-intro .ip-inner {

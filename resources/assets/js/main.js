@@ -1,5 +1,6 @@
 import classie from 'classie'
-import imagesLoaded from 'imagesLoaded'
+// import Modernizr from 'modernizr'
+import imagesLoaded from 'imagesloaded'
 // import LazyLoad from 'vanilla-lazyload'
 import svg4everybody from 'svg4everybody'
 
