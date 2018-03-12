@@ -4,7 +4,7 @@
         <source srcset="{{ asset('images/header-bg-mobile.jpg') }}"
                 media="(max-width: 640px)"/>
         <source srcset="{{ asset('images/header-bg-tablet.jpg') }}"
-                media="(min-width: 641px)"/>
+                media="(max-width: 1023px)"/>
         <source srcset="{{ asset('images/header-bg-desktop.jpg') }}"
                 media="(min-width: 1024px)"/>
         <!--[if IE 9]></audio><![endif]-->

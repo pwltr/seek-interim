@@ -2,22 +2,18 @@
 
 @section('title', 'terms')
 
-{{-- @section('header')
-  @include('library.modules.header')
-@endsection --}}
-
 @section('content')
   <div class="outer-container">
-    <div class="inner-container">
-      <h2 class="section-title">
+    <div class="page-footer inner-container">
+      <h1 class="page-title">
         Terms of Service
-      </h2>
+      </h1>
 
       <span class="section-subtitle">
         Privacy policy
       </span>
 
-      <p class="section-text">
+      <p class="page-footer-text">
 We respect your personal data and do our best to protect it. SEEK Athletics
 will only collect, process and use your personal data in compliance with the
 provisions of this Privacy Policy and the applicable data protection legislation.
@@ -109,8 +105,6 @@ Last updated: 18 February 2017
       </p>
     </div>
   </div>
-@endsection
 
-@section('footer')
   @include('library.modules.footer')
 @endsection

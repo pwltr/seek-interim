@@ -20,6 +20,11 @@ $(document).ready(() => {
 
   const support = { animations: Modernizr.cssanimations }
   const container = document.getElementById('ip-container')
+
+  if (!document.body.contains(container)) {
+    return false
+  }
+
   const header = container.querySelector('.ip-intro')
   const loader = new PathLoader(document.getElementById('ip-loader-circle'))
   const animEndEventNames = {

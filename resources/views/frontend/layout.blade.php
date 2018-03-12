@@ -5,7 +5,7 @@
         @include('frontend.head.favicon')
         {{-- @include('frontend.head.social') --}}
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-        <script src="vendor/modernizr.custom.js"></script>
+        <script src="{{ asset('vendor/modernizr.custom.js') }}"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115444729-1"></script>
@@ -23,17 +23,10 @@
     </head>
 
     <body>
-      <div id="ip-container" class="ip-container page-wrapper page-@yield('title')">
-        @include('library.modules.intro')
-
-        <main class="ip-main">
-          @yield('header')
-          @yield('content')
-          @yield('footer')
-        </main>
+      <div class="page-wrapper page-@yield('title')">
+        @yield('content')
       </div>
 
-      <script src="{{ app()->getLocale() }}/js/lang.js"></script>
       <script src="{{ asset('js/manifest.js') }}"></script>
       <script src="{{ asset('js/vendor.js') }}"></script>
       <script src="{{ asset('js/main.js') }}"></script>

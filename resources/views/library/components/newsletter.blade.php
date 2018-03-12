@@ -5,7 +5,7 @@
     <input type="hidden" name="formID" value="nlform">
 
     <div class="nsf-view nsf-view-1 js-nsf-view-1">
-      <input id="nsf-mail" class="nsf-input" type="email" placeholder="Email address" value="">
+      <input id="nsf-mail" class="nsf-input" type="email" placeholder="{{ __('newsletter.email') }}" value="">
 
       <button class="hc-btn nsf-btn js-nsf-btn-1" type="button">
         <span class="nsf-btn-text">
@@ -15,8 +15,8 @@
     </div>
 
     <div class="nsf-view nsf-view-2 js-nsf-view-2">
-      <input id="nsf-firstname" class="nsf-input" type="text" placeholder="First name" value="">
-      <input id="nsf-lastname" class="nsf-input" type="text" placeholder="Last name" value="">
+      <input id="nsf-firstname" class="nsf-input" type="text" placeholder="{{ __('newsletter.first_name') }}" value="">
+      <input id="nsf-lastname" class="nsf-input" type="text" placeholder="{{ __('newsletter.last_name') }}" value="">
 
       <button class="nsf-btn js-nsf-btn-2" type="submit">
         <span class="nsf-btn-text">
