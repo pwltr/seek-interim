@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('{locale}', 'WelcomeController@index');
+Route::get('{locale?}', 'WelcomeController@index');
 Route::get('{locale}/imprint', 'PagesController@imprint');
 Route::get('{locale}/terms', 'PagesController@terms');
 
 // Localization
-Route::get('{locale}/js/lang.js', 'LocaleStringsController@index')->name('assets.lang');
+Route::get('{locale}/js/lang.js', 'LocaleStringsController@index');
 
 Route::post('/', 'WelcomeController@subscribeToNewsletter');

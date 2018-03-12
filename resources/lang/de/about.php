@@ -5,7 +5,7 @@ return [
   'subtitle' => 'Was wir machen. Und warum.',
   'text' => '
   <p>
-    xxxBrands still think in boxes. A running shirt for running, a fitness shirt for fitness, and an outdoor shirt
+    Brands still think in boxes. A running shirt for running, a fitness shirt for fitness, and an outdoor shirt
     for the outdoors. <strong>One separate product for each sports activity. Really?</strong>
     <br><br>
     We believe this does not reflect a sustainable, conscious and <strong>active lifestyle</strong>. We believe that brands

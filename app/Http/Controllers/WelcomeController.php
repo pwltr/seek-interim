@@ -9,7 +9,7 @@ use \DrewM\MailChimp\MailChimp;
 
 class WelcomeController extends Controller
 {
-    public function index($locale) {
+    public function index($locale = 'en') {
         App::setLocale($locale);
 
         return view('frontend.welcome', [
