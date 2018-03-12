@@ -1,5 +1,26 @@
 .footer {
   background: $clr-gray-dark;
   color: $clr-white;
-  padding: 12rem 0;
+  padding: 6rem 0;
+}
+
+.footer-nav {
+  //
+}
+
+.footer-nav-list {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.fnl-item {
+  &:not(:last-child) {
+    margin-right: 2rem;
+  }
+}
+
+.fnl-item-link {
+  color: $clr-white;
+  text-transform: uppercase;
+  font-style: italic;
 }

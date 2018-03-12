@@ -1,14 +1,11 @@
 <header class="header">
   <div class="header-background">
     <picture>
-        <source
-                srcset="{{ asset('images/header-bg-mobile.jpg') }}"
+        <source srcset="{{ asset('images/header-bg-mobile.jpg') }}"
                 media="(max-width: 640px)"/>
-        <source
-                srcset="{{ asset('images/header-bg-tablet.jpg') }}"
+        <source srcset="{{ asset('images/header-bg-tablet.jpg') }}"
                 media="(min-width: 641px)"/>
-        <source
-                srcset="{{ asset('images/header-bg-desktop.jpg') }}"
+        <source srcset="{{ asset('images/header-bg-desktop.jpg') }}"
                 media="(min-width: 1024px)"/>
         <!--[if IE 9]></audio><![endif]-->
         <img src="{{ asset('images/header-bg-desktop.jpg') }}"
@@ -22,15 +19,20 @@
         <nav class="nav">
           <ul class="nav-list">
             <li class="nav-item">
-              <a class="nav-item-link" href="#section-about">about</a>
+              <a class="nav-item-link" href="#section-about">
+                {{ __('navigation.about') }}
+              </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-item-link" href="#section-contact">Contact</a>
+              <a class="nav-item-link" href="#section-contact">
+              {{ __('navigation.contact') }}</a>
             </li>
 
             {{-- <li class="nav-item">
-              <a class="nav-item-link" href="#section-blog">Blog</a>
+              <a class="nav-item-link" href="#section-blog">
+                {{ __('navigation.blog') }}
+              </a>
             </li> --}}
           </ul>
         </nav>
@@ -39,13 +41,13 @@
 
     <div class="header-content">
       <span class="hc-text">
-        Activewear for the modern urbanite that breaks through common thought patterns.
+        {{ __('header.text.line1') }}
         <br>
-        Where premium performance meets lifestyle. Honest, stylish, versatile.
+        {{ __('header.text.line2') }}
       </span>
 
       <h2 class="hc-title">
-        Coming Soon!
+        {{ __('header.coming_soon') }}
       </h2>
 
       @include('library.components.newsletter')

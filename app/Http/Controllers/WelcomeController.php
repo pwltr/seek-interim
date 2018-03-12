@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\Subscriber;
 use Illuminate\Http\Request;
 use \DrewM\MailChimp\MailChimp;
 
 class WelcomeController extends Controller
 {
-    public function index() {
-        return view('frontend.welcome');
+    public function index($locale) {
+        App::setLocale($locale);
+
+        return view('frontend.welcome', [
+          'locale' => App::getLocale($locale)
+        ]);
     }
 
     public function subscribeToNewsletter(Request $request) {
@@ -41,7 +46,11 @@ class WelcomeController extends Controller
       $mailchimp = new MailChimp($apiKey);
 
       $result = $mailchimp->post("lists/$listID/members", [
-        'merge_fields' => ['FNAME' => $first_name, 'LNAME' => $last_name],
+        'merge_fields' => [
+          'FNAME' => $first_name,
+          'LNAME' => $last_name,
+          'locale' => App::setLocale($locale)
+        ],
         'email_address' => $email,
         'status' => 'subscribed'
       ]);

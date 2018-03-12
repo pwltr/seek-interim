@@ -12,5 +12,5 @@
 @endsection
 
 @section('footer')
-  {{-- @include('library.modules.footer') --}}
+  @include('library.modules.footer')
 @endsection

@@ -33,6 +33,7 @@
         </main>
       </div>
 
+      <script src="{{ app()->getLocale() }}/js/lang.js"></script>
       <script src="{{ asset('js/manifest.js') }}"></script>
       <script src="{{ asset('js/vendor.js') }}"></script>
       <script src="{{ asset('js/main.js') }}"></script>

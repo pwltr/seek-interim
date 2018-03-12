@@ -9,7 +9,7 @@
 
       <button class="hc-btn nsf-btn js-nsf-btn-1" type="button">
         <span class="nsf-btn-text">
-          Notify me
+          {{ __('newsletter.notify_me') }}
         </span>
       </button>
     </div>
@@ -20,7 +20,7 @@
 
       <button class="nsf-btn js-nsf-btn-2" type="submit">
         <span class="nsf-btn-text">
-          Send
+          {{ __('newsletter.send') }}
         </span>
 
         <div class="loading-wrapper">
@@ -30,7 +30,7 @@
     </div>
 
     <div class="nsf-view nsf-view-3 js-nsf-view-3">
-      Thank you! You will hear from us soon.
+      {{ __('newsletter.thankyou') }}
     </div>
   </form>
 
