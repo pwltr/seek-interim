@@ -5,30 +5,38 @@ return [
   'subtitle' => 'Was wir machen. Und warum.',
   'text' => '
   <p>
-    Brands still think in boxes. A running shirt for running, a fitness shirt for fitness, and an outdoor shirt
-    for the outdoors. <strong>One separate product for each sports activity. Really?</strong>
+    Ein Laufshirt zum Laufen, ein Fitness Shirt für Fitness und ein Outdoor Shirt zum Wandern. Für jede
+    sportliche Aktivität gibt es das passende Produkt. <strong>Ist das zeitgemäß?</strong>
     <br><br>
-    We believe this does not reflect a sustainable, conscious and <strong>active lifestyle</strong>. We believe that brands
-    should have <strong>nothing to hide</strong> and should <strong>be honest with their consumers</strong>. And we truly believe that a
-    <strong>minimalist lifestyle</strong> enriches our lives. <strong>Owning less but choosing right.</strong> Products of superior quality
-    that are built to last.
+    Wir glauben, dass man den bewussten <strong>aktiven Lebensstil</strong> vieler von uns nicht so einfach in eine
+    Schublade packen kann. Wir glauben, dass Marken mit ihren Konsumenten <strong>ehrlich umgehen</strong> und
+    <strong>maximale Transparenz zeigen</strong> sollten.
     <br><br>
-    <strong>This is why we founded SEEK Athletics:</strong>
+    Und wir glauben fest daran, dass ein <strong>minimalistischer Lebensstil</strong> unser Leben bereichert. <strong>Weniger zu
+    besitzen, aber das Richtige.</strong> Qualitativ hochwertige Produkte, die langlebig und ohne Kompromisse
+    bei der Leistung vielseitig einsetzbar.
+    <br><br>
+    <strong>Deshalb haben wir SEEK Athletics gegründet:</strong>
   </p>
+
   <ul>
     <li>
-      <strong>Versatile</strong> – minimalistic premium performance apparel with special features for running, the gym and the urban outdoors</li>
+      <strong>Vielseitig</strong> – minimalistisch designte Premium Performance Sportswear mit speziellen Features für
+      Runnint, Fitness &amp; Urban Outdoors
+    </li>
     <li>
-      <strong>Honest</strong> – designed in Vienna, developed in Austria &amp; made in Europe</li>
+      <strong>Ehrlich</strong> – designed in Wien, entwickelt in Österreich und produziert in Europa
     <li>
-      <strong>Sustainable</strong> – finest European materials &amp; fabrics with maximum comfort &amp; function</li>
+      <strong>Nachhaltig</strong> – feinste europäische Stoffe und Materialien für maximale Qualität, Komfort und
+      Funktion
+    </li>
   </ul>
   <p>
-    We are just at the beginning of our journey and look forward to reshaping the industry.
+    Wir sind erst am Anfang unserer Reise –Stay tuned!
     <br>
     Christian &amp; Markus
     <br><br>
-    Keep up with us, stay informed and get access to exclusive early bird promotions!
+    Erfahre als Erster, was es bei SEEK Neues gibt und sichere dir exklusive Angebote.
   </p>
   '
 ];

@@ -63,7 +63,7 @@ form.on('submit', function(e) {
     (!firstName || firstName.length == 0) ||
     (!lastName || lastName.length == 0)
   ) {
-    messages = [...messages, 'Please tell us your name.']
+    messages = [...messages, window.i18n.newsletter.errorName]
 
     container.attr('data-state', 'error')
     messages.forEach(msg => statusBox.append(`<div>${msg}</div>`))
@@ -97,24 +97,24 @@ form.on('submit', function(e) {
     }
 
     if (res.success === 'subscribed') {
-      messages = [...messages, 'Thank you! You will hear from us soon.']
+      messages = [...messages, window.i18n.newsletter.thankyou]
     }
   })
   .catch(error => {
     if (error.response) {
-      const message = error.response.data.error
+      const errorMsg = error.response.data.error
 
       container.attr('data-state', 'error')
 
       // Handle Errors
-      if (message === 'Invalid Email') {
+      if (errorMsg === 'Invalid Email') {
         messages = [...messages, 'Please enter a valid email address.']
         emailField.parent().addClass('has-error')
       }
-      else if (message === 'Member exists') {
+      else if (errorMsg === 'Member exists') {
         messages = [...messages, 'You are already subscribed.']
       }
-      else if (message === 'Invalid Resource') {
+      else if (errorMsg === 'Invalid Resource') {
         messages = [...messages, 'Your email address seems to be invalid.']
       }
       else {

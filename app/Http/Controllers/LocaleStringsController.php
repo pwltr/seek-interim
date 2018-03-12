@@ -21,7 +21,7 @@ class LocaleStringsController extends Controller
           $strings[$name] = require $file;
       }
 
-      return $strings;
+      // return $strings;
 
       header('Content-Type: text/javascript');
       echo('window.i18n = ' . json_encode($strings) . ';');
