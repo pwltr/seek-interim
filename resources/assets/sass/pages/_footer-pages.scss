@@ -1,0 +1,36 @@
+.page-footer {
+  padding: 8rem 0 12rem;
+  max-width: 80rem;
+
+  .page-title {
+    color: $clr-primary;
+    font-size: 4rem;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+  }
+
+  .page-subtitle {
+    color: $clr-primary;
+    display: block;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .page-footer-text {
+    font-size: 1.8rem;
+  }
+
+  .anchor {
+    color: $clr-black;
+    display: inline-block;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    margin-right: 1rem;
+    text-transform: uppercase;
+  }
+
+  .back-btn {
+    display: block;
+    margin-bottom: 2rem;
+  }
+}
