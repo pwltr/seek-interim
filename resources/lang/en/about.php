@@ -19,12 +19,12 @@ return [
     <li>
       <strong>Versatile</strong> – minimalistic premium performance apparel with special features for running, the gym and the urban outdoors</li>
     <li>
-      <strong>Honest</strong> – designed in Vienna, developed in Austria &amp; made in Europe</li>
+      <strong>Stylish</strong> – designed in Vienna, developed in Austria &amp; made in Europe</li>
     <li>
       <strong>Sustainable</strong> – finest European materials &amp; fabrics with maximum comfort &amp; function</li>
   </ul>
   <p>
-    We are just at the beginning of our journey and look forward to reshaping the industry.
+    We are just at the beginning of our journey and look forward to reshaping the industry!
     <br>
     Christian &amp; Markus
     <br><br>

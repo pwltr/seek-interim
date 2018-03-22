@@ -45,11 +45,13 @@ class WelcomeController extends Controller
 
       $mailchimp = new MailChimp($apiKey);
 
+      $locale = App::getLocale();
+
       $result = $mailchimp->post("lists/$listID/members", [
         'merge_fields' => [
           'FNAME' => $first_name,
           'LNAME' => $last_name,
-          'locale' => App::setLocale($locale)
+          'LOCALE' => $locale
         ],
         'email_address' => $email,
         'status' => 'subscribed'

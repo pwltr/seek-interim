@@ -6,7 +6,6 @@ import svg4everybody from 'svg4everybody'
 
 import globals from './config/globals'
 import PathLoader from './modules/pathLoader'
-
 import { getCookie, setCookie, deleteCookie } from './utils'
 // import './modules/nav-mobile'
 import './modules/newsletterSignup'
@@ -60,7 +59,7 @@ $(document).ready(() => {
   }
 
   function startLoading() {
-    // simulate loading something..
+    // simulate loading something...
     let simulationFn = function(instance) {
       let progress = 0
 
@@ -110,6 +109,7 @@ $(document).ready(() => {
     initLoadingScreen()
   } else {
     classie.add(container, 'loaded')
+    classie.add(container, 'instant-loaded')
     classie.add(document.body, 'layout-switch')
   }
 })
