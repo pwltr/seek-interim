@@ -1,7 +1,11 @@
 .footer {
   background: $clr-gray-dark;
   color: $clr-white;
-  padding: 6rem 0;
+  padding: 3rem 0;
+
+  @include mq-min($bp-tablet-p) {
+    padding: 6rem 0;
+  }
 }
 
 .footer-nav {

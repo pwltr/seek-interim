@@ -16,10 +16,6 @@
           gtag('js', new Date());
           gtag('config', 'UA-115444729-1');
         </script>
-
-        <script type="text/javascript">
-          console.log("GA einbinden");
-        </script>
     </head>
 
     <body>

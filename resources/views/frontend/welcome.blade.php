@@ -4,7 +4,7 @@
 
 @section('content')
   <div id="ip-container" class="ip-container">
-    @include('library.modules.intro')
+    {{-- @include('library.modules.intro') --}}
 
     <main class="ip-main">
       @include('library.modules.header')

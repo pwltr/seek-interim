@@ -25,13 +25,17 @@ button {
   color: $clr-white;
   cursor: pointer;
   display: inline-block;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: $font-weight-SemiBold;
   line-height: 4.4rem;
   // padding: 1.7rem 2.5rem;
   padding: 0 3rem;
   text-align: center;
   transition: all 0.4s;
+
+  @include mq-min($bp-tablet-p) {
+    font-size: 2rem;
+  }
 
   &:hover {
     // box-shadow: inset 0 0 rem-calc(20) rgba($clr-black, 0.2);
@@ -139,7 +143,11 @@ button {
 
   background: transparent;
   border: 1px solid $clr-white;
-  line-height: 5.6rem;
+  line-height: 5.4rem;
+
+  @include mq-min($bp-tablet-p) {
+    line-height: 5.6rem;
+  }
 
   &:hover {
     // box-shadow: inset 0 0 rem-calc(20) rgba($clr-black, 0.2);

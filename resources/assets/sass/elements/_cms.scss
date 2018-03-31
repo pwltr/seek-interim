@@ -1,11 +1,19 @@
 .cms-content {
   p {
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 1.4;
+
+    @include mq-min($bp-tablet-p) {
+      font-size: 2rem;
+    }
   }
 
   ul {
-    font-size: 2rem;
+    font-size: 1.8rem;
+
+    @include mq-min($bp-tablet-p) {
+      font-size: 2rem;
+    }
 
     li {
       list-style: disc;

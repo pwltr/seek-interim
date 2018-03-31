@@ -168,6 +168,7 @@
 
 @keyframes animLoadedContentElements {
   from {
+    opacity: 0;
 		transform: translate(0, 130%);
   }
 }

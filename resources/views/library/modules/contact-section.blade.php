@@ -8,7 +8,7 @@
       <p class="section-text">
         Wanna get in touch? Please write us an email:
         <br>
-        <a href="mailto:hello@seek-athetics.com">hello@seek-athetics.com</a>
+        <a href="mailto:hello@seek-athletics.com">hello@seek-athletics.com</a>
       </p>
     </div>
   </div>

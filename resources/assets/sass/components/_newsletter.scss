@@ -21,7 +21,7 @@
   line-height: 4.4rem;
   margin-bottom: 2rem;
   padding: 0 2rem;
-  flex: 1;
+  flex: 1 100%;
   transform: scaleX(1);
   transition: all 0.4s ease;
   transform-origin: right center;
@@ -60,12 +60,16 @@
   @extend .btn--outline;
 
   display: block;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: $font-weight-Light;
   letter-spacing: 4px;
   text-transform: uppercase;
   overflow: hidden;
   position: relative;
+
+  @include mq-min($bp-tablet-p) {
+    font-size: 2rem;
+  }
 
   .loading-wrapper {
     display: none;
@@ -123,10 +127,15 @@
 .nsf-view {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   margin: 0 auto;
   max-width: 70rem;
   transition: box-shadow 0.12s linear;
+
+  @include mq-min($bp-tablet-l) {
+    align-items: initial;
+  }
 
   &.has-focus {
     box-shadow: 0 15px 35px rgba(50, 50, 93, 0.2), 0 5px 15px rgba(0, 0, 0, 0.17);

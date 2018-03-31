@@ -13,7 +13,7 @@
       <a class="anchor" href="#en">English</a>
 
       <span id="de" class="page-subtitle">
-        Datenschutzbestimmungen
+        Daten&shy;schutz&shy;bestimmungen
       </span>
 
       <p class="page-footer-text">
