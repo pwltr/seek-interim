@@ -63,6 +63,7 @@
   font-size: 1.8rem;
   font-weight: $font-weight-Light;
   letter-spacing: 4px;
+  margin: 2rem auto 0;
   text-transform: uppercase;
   overflow: hidden;
   position: relative;
@@ -154,10 +155,6 @@
 
   [data-state="show-view-2"] & {
     display: block;
-  }
-
-  .nsf-btn {
-    margin: 2rem auto 0;
   }
 }
 
