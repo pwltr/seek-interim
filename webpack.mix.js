@@ -18,7 +18,6 @@ mix.autoload({
 mix.js('resources/assets/js/main', 'public/js')
    .extract([
      'cash-dom',
-     'imagesloaded',
      'svg4everybody',
      'vanilla-lazyload',
    ])

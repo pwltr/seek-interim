@@ -1,17 +1,18 @@
 import classie from 'classie'
 // import Modernizr from 'modernizr'
-import imagesLoaded from 'imagesloaded'
-// import LazyLoad from 'vanilla-lazyload'
+// import imagesLoaded from 'imagesloaded'
+import LazyLoad from 'vanilla-lazyload'
 import svg4everybody from 'svg4everybody'
 
 import globals from './config/globals'
-import PathLoader from './modules/pathLoader'
-import { getCookie, setCookie, deleteCookie } from './utils'
+// import PathLoader from './modules/pathLoader'
+// import { getCookie, setCookie, deleteCookie } from './utils'
 // import './modules/nav-mobile'
 import './modules/newsletterSignup'
 
 $(document).ready(() => {
   svg4everybody()
+  const lazyLoad = new LazyLoad()
 
   // const hasVisited = getCookie('loading-screen')
   //
@@ -23,7 +24,7 @@ $(document).ready(() => {
   if (!document.body.contains(container)) {
     return false
   }
-  //
+
   // const header = container.querySelector('.ip-intro')
   // const loader = new PathLoader(document.getElementById('ip-loader-circle'))
   // const animEndEventNames = {

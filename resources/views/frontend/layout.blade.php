@@ -4,8 +4,8 @@
         @include('frontend.head.meta')
         @include('frontend.head.favicon')
         {{-- @include('frontend.head.social') --}}
-        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-        <script src="{{ asset('vendor/modernizr.custom.js') }}"></script>
+        <link rel="stylesheet" href="{{ mix('css/main.css') }}">
+        {{-- <script src="{{ asset('vendor/modernizr.custom.js') }}"></script> --}}
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115444729-1"></script>
@@ -23,9 +23,9 @@
         @yield('content')
       </div>
 
-      <script src="{{ asset('js/manifest.js') }}"></script>
-      <script src="{{ asset('js/vendor.js') }}"></script>
-      <script src="{{ asset('js/main.js') }}"></script>
+      <script src="{{ mix('js/manifest.js') }}"></script>
+      <script src="{{ mix('js/vendor.js') }}"></script>
+      <script src="{{ mix('js/main.js') }}"></script>
 
       @yield('scripts')
     </body>

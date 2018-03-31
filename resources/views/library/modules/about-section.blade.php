@@ -21,7 +21,7 @@
                   data-srcset="{{ asset('images/about.jpg') }}"
                   media="(min-width: 1024px)"/>
           <!--[if IE 9]></audio><![endif]-->
-          <img src="{{ asset('images/about.jpg') }}"
+          <img data-src="{{ asset('images/about.jpg') }}"
                class="about-section-img preload" alt=""/>
       </picture>
 
